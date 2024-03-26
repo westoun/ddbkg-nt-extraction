@@ -55,9 +55,18 @@ def create_url_map(xml: str) -> Dict:
         # Handle edge case where list of multiple urls is used
         # as one value.
         if len(re.findall(r"(?:http|ftp|https)://", url)) > 1:
-            continue
+            sub_urls = url.split(" ")
 
-        sanitized_url = parse.quote(url, safe="/:#")
+            sanitized_sub_urls = []
+            for sub_url in sub_urls:
+                sanitized_sub_url = parse.quote(sub_url, safe="/:#")
+                sanitized_sub_urls.append(sanitized_sub_url)
+
+            sanitized_url = " ".join(sanitized_sub_urls)
+
+        else:
+            sanitized_url = parse.quote(url, safe="/:#")
+
         if url != sanitized_url:
             url_map[url] = sanitized_url
 
