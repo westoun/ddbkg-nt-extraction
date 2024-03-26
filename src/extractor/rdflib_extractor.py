@@ -52,6 +52,11 @@ def create_url_map(xml: str) -> Dict:
     for match in matches:
         url = match[1:-1]
 
+        # Handle edge case where list of multiple urls is used
+        # as one value.
+        if len(re.findall(r"(?:http|ftp|https)://", url)) > 1:
+            continue
+
         sanitized_url = parse.quote(url, safe="/:#")
         if url != sanitized_url:
             url_map[url] = sanitized_url
