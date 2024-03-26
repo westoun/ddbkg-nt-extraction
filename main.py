@@ -14,7 +14,7 @@ load_dotenv()
 
 
 def main():
-    extractor_worker_count = getenv("PARSER_WORKER_COUNT")
+    extractor_worker_count = getenv("EXTRACTOR_WORKER_COUNT")
     if extractor_worker_count is None:
         extractor_worker_count = 1
     else:
