@@ -9,8 +9,7 @@ Before running any code, make sure you have all
 required environment files setup and the included
 environment variables defined based on your setup.
 
-In the case of the download and location server, navigate
-into the corresponding directory, create a copy of the
+Create a copy of the
 .template.env-file, rename it to .env, and fill in the
 variable values accordingly.
 
